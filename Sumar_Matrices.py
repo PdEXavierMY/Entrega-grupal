@@ -4,7 +4,8 @@ def simpleArraySum(matriz):
         suma += i
     return suma
 
-def construccion_matriz(matriz):
+def construccion_matriz():
+    matriz = []
     filas = int(input("¿Cuántas filas tendrá la matriz?(Por favor intrduzca solo un número) "))
     #Se podría modificar reutilizando código para que se repitiese la pregunta si no se introduce un entero
     print("Todas las filas deben tener el mismo número de elementos.")
@@ -25,6 +26,6 @@ def construccion_matriz(matriz):
     return matriz
 
 if __name__ == '__main__':
-    matriz = []
+    matriz = construccion_matriz()
     result = simpleArraySum(matriz)
-    construccion_matriz(matriz)
+    print("La suma total de todos los elementos de una matriz es " + str(result))
