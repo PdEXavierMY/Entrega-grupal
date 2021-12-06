@@ -19,6 +19,8 @@ def construccion_matriz(matriz):
     for j in matriz:
         while len(j) > columnas:
             j.pop()
+        while len(j) < columnas:
+            j.append(0)
     print(matriz)
     return matriz
 
