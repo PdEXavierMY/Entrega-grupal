@@ -1,16 +1,10 @@
-import math
-import os
-import random
-import re
-import sys
-
-def simpleArraySum(ar):
+def simpleArraySum(matriz):
     suma = 0
-    for i in ar:
+    for i in matriz:
         suma += i
     return suma
 
 if __name__ == '__main__':
-    ar_count = int(input().strip())
-    ar = list(map(int, input().rstrip().split()))
-    result = simpleArraySum(ar)
+    matriz = list(map(int, input().rstrip().split()))
+    print(matriz)
+    result = simpleArraySum(matriz)
