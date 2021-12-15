@@ -9,14 +9,14 @@ def simpleArraySum(matriz):
 
 def construccion_matriz():
     matriz = []
-    filas = int(input("¿Cuántas filas tendrá la matriz?(Por favor intrduzca solo un número) "))
+    filas = int(input("¿Cuántas filas tendrá la matriz de números a sumar?(Por favor intrduzca solo un número) "))
     #(Se podría modificar para que se repitiese la pregunta si no se introduce un entero)
     print("Todas las filas deben tener el mismo número de elementos.")
     print("Si alguna fila tiene más elementos que la anterior, se eliminarán los últimos elementos de esta hasta que en cada fila haya el mismo número de elementos.")
     print("Si alguna fila tiene menos elementos que la anterior, se añádirán 0 hasta que en cada fila haya el mismo número de elementos.")
     for i in range(filas):
         print("Introduzca los números de la fila separados solamente por un espacio:")
-        fila_matriz = list(map(int, input().rstrip().split()))
+        fila_matriz = list(map(float, input().rstrip().split()))
         #Creas una fila(como está dentro de un bucle creas tantas como veces se repite el bucle)
         #(Se podría modificar para que se repitiese la pregunta si no se introducen solo enteros)
         matriz += [fila_matriz]
@@ -34,4 +34,4 @@ def construccion_matriz():
 if __name__ == '__main__':
     matriz = construccion_matriz()
     result = simpleArraySum(matriz)
-    print("La suma total de todos los elementos de la matriz es " + str(result))
+    print("La suma total de todos los elementos es " + str(result))
