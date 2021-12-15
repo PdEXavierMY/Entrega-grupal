@@ -1,7 +1,6 @@
 #Juego de piedras
 
 import random
-from typing import no_type_check
 
 def casospiedras(npiedras):
     if npiedras == 2:
@@ -67,6 +66,7 @@ def casospiedras(npiedras):
     elif npiedras == 20:
         npiedras -= 5
         print("5 piedras")
+    return npiedras
     
 
 movimientosposibles = [2, 3, 5]
@@ -75,12 +75,12 @@ turno = 1
 while True:
     if turno == 1: #Jugador 1
         if npiedras < 2:
-            print("Jugador 1 ha perdido, no puede extraer piedras")
+            print("Jugador 1 ha perdido, no puede extraer piedras.")
             break
         else:
-            if npiedras < 20:
-                casospiedras(npiedras)
+            if npiedras <= 20:
                 print("Jugador 1 quita ", end="")
+                npiedras = casospiedras(npiedras)
                 print("Quedan " + str(npiedras) + " piedras.")
                 turno = 2
             else:
@@ -90,12 +90,12 @@ while True:
                 turno = 2
     if turno == 2: #Jugador 2
         if npiedras < 2:
-            print("Jugador 2 ha perdido, no puede extraer piedras")
+            print("Jugador 2 ha perdido, no puede extraer piedras.")
             break
         else:
             if npiedras < 20:
-                casospiedras(npiedras)
                 print("Jugador 2 quita ", end="")
+                npiedras = casospiedras(npiedras)
                 print("Quedan " + str(npiedras) + " piedras.")
                 turno = 1
             else:
