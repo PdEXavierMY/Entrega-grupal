@@ -10,9 +10,16 @@ def gradingStudents():
         diferencia = n - nota
 
         if diferencia > 3:
+            nota = nota
             print("Su nota es un aprovado, pero no fue redondeada: " + str(nota))
         
         else:
-            print("Su nota es un aprovado y fue redondeada: " + str(nota))
-            
+            nota = nota + diferencia
+            print("Su nota es un aprovado y fue redondeada a un: " + str(nota))
+
+if __name__ == "__main__":
+    nota = int(input("Introduce tu nota: "))
+    gradingStudents()
+
+
 
