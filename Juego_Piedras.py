@@ -87,6 +87,7 @@ while True:
                 movimiento = random.choice(movimientosposibles)
                 npiedras -= movimiento
                 print("Jugador 1 quita " + str(movimiento) + " piedras.")
+                print("Quedan " + str(npiedras) + " piedras.")
                 turno = 2
     if turno == 2: #Jugador 2
         if npiedras < 2:
@@ -102,4 +103,5 @@ while True:
                 movimiento = random.choice(movimientosposibles)
                 npiedras -= movimiento
                 print("Jugador 2 quita " + str(movimiento) + " piedras.")
+                print("Quedan " + str(npiedras) + " piedras.")
                 turno = 1
