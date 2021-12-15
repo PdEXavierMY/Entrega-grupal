@@ -1,6 +1,7 @@
 #Juego de piedras
 
 import random
+from typing import no_type_check
 
 def casospiedras(npiedras):
     if npiedras == 2:
@@ -19,18 +20,18 @@ def casospiedras(npiedras):
         npiedras -= 5
         print("5 piedras")
     elif npiedras == 7:
-        n = random.choice(2, 3, 5)
+        n = random.choice(movimientosposibles)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 8:
-        n = random.choice(2, 3, 5)
+        n = random.choice(movimientosposibles)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 9:
         npiedras -= 2
         print("2 piedras")
     elif npiedras == 10:
-        n = random.choice(2, 3)
+        n = random.randint(2, 3)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 11:
@@ -43,18 +44,18 @@ def casospiedras(npiedras):
         npiedras -= 5
         print("5 piedras")
     elif npiedras == 14:
-        n = random.choice(2, 3, 5)
+        n = random.choice(movimientosposibles)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 15:
-        n = random.choice(2, 3, 5)
+        n = random.choice(movimientosposibles)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 16:
         npiedras -= 2
         print("2 piedras")
     elif npiedras == 17:
-        n = random.choice(2, 3)
+        n = random.randint(2, 3)
         npiedras -= n
         print(str(n) + " piedras")
     elif npiedras == 18:
@@ -68,37 +69,37 @@ def casospiedras(npiedras):
         print("5 piedras")
     
 
-def juegopiedras(npiedras):
-    #movimientosposibles = [2, 3, 5]
-    turno = 1
-    while True:
-        if turno == 1: #Jugador 1
-            if npiedras < 2:
-                print("Jugador 1 ha perdido, no puede extraer piedras")
-                break
+movimientosposibles = [2, 3, 5]
+npiedras = int(input("¿Con cuántas piedras se va a jugar?: "))
+turno = 1
+while True:
+    if turno == 1: #Jugador 1
+        if npiedras < 2:
+            print("Jugador 1 ha perdido, no puede extraer piedras")
+            break
+        else:
+            if npiedras < 20:
+                casospiedras(npiedras)
+                print("Jugador 1 quita ", end="")
+                print("Quedan " + str(npiedras) + " piedras.")
+                turno = 2
             else:
-                if npiedras < 20:
-                    casospiedras(npiedras)
-                    print("Jugador 1 quita ", end="")
-                    print("Quedan " + str(npiedras) + " piedras.")
-                    turno = 2
-                else:
-                    movimiento = random.choice(2, 3, 5)
-                    npiedras -= movimiento
-                    print("Jugador 1 quita " + str(movimiento) + " piedras.")
-                    turno = 2
-        if turno == 2: #Jugador 2
-            if npiedras < 2:
-                print("Jugador 2 ha perdido, no puede extraer piedras")
-                break
+                movimiento = random.choice(movimientosposibles)
+                npiedras -= movimiento
+                print("Jugador 1 quita " + str(movimiento) + " piedras.")
+                turno = 2
+    if turno == 2: #Jugador 2
+        if npiedras < 2:
+            print("Jugador 2 ha perdido, no puede extraer piedras")
+            break
+        else:
+            if npiedras < 20:
+                casospiedras(npiedras)
+                print("Jugador 2 quita ", end="")
+                print("Quedan " + str(npiedras) + " piedras.")
+                turno = 1
             else:
-                if npiedras < 20:
-                    casospiedras(npiedras)
-                    print("Jugador 2 quita ", end="")
-                    print("Quedan " + str(npiedras) + " piedras.")
-                    turno = 1
-                else:
-                    movimiento = random.choice(2, 3, 5)
-                    npiedras -= movimiento
-                    print("Jugador 2 quita " + str(movimiento) + " piedras.")
-                    turno = 1
+                movimiento = random.choice(movimientosposibles)
+                npiedras -= movimiento
+                print("Jugador 2 quita " + str(movimiento) + " piedras.")
+                turno = 1
