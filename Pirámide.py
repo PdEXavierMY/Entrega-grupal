@@ -2,4 +2,8 @@
 n = int(input("Introduce la altura de la pirámide: ")) 
 
 def piramide():
-    
+    for fila in range(n):
+        print("." * (n - fila -1), end="")
+        
+
+piramide()
