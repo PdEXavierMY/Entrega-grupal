@@ -1,0 +1,1 @@
+n = int(input("Introduce la altura de la pirámide: "))
