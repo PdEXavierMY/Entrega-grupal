@@ -23,4 +23,22 @@ def casospiedrasfavorables(npiedras):
         npiedras -= 5
     elif npiedras == 13:
         npiedras -= 5
+
+def juegopiedras(npiedras):
+    #movimientosposibles = [2, 3, 5]
+    turno = 1
+    while turno == 1: #Jugador 1
+        finmovimiento = False
+        if npiedras < 2:
+            print("Jugador 1 ha perdido, no puede extraer piedras")
+            break
+        else:
+            if npiedras < 13:
+                casospiedrasfavorables(npiedras)
+                print("Jugador 1 quita ", end="")
+                print("Quedan " + str(npiedras) + " piedras.")
+            else:
+                if finmovimiento == True:
+                    turno = 2
+    while turno == 2: #Jugador 2
     
