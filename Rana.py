@@ -85,13 +85,55 @@ def movimientos(naleatorio):
     elif naleatorio == 4:
         return "Izquierda"
 
+def comparacion(i, j):
+    if laberinto[i][j] == "S":
+        return (i, j)
+    if laberinto[i][j] == "B":
+        return (i, j)
+    if laberinto[i][j] == "t":
+        if (i, j) == tunel1[0]:
+            i = tunel1[1][0]
+            j = tunel1[1][1]
+        else:
+            i = tunel1[0][0]
+            j = tunel1[0][1]
+        return (i, j)
+    if laberinto[i][j] == "T":
+        if (i, j) == tunel2[0]:
+            i = tunel2[1][0]
+            j = tunel2[1][1]
+        else:
+            i = tunel2[0][0]
+            j = tunel2[0][1]
+        return (i, j)
+
 def juego_rana():
+    i = rana[0][0]
+    j = rana[0][1]
     while True:
-        i = rana[0][0]
-        j = rana[0][1]
         direccion = random.randint(1, 4)
         movimiento = movimientos(direccion)
-        if movimiento == "Arriba":
-        if movimiento == "Abajo":
-        if movimiento == "Derecha":
-        if movimiento == "Izquierda":
+        if movimiento == "Arriba" and laberinto[i - 1][j] != "X":
+            laberinto[i][j] = " "
+            i -= 1
+            coordenadas = comparacion(i, j)
+            i = coordenadas[0]
+            j = coordenadas[1]
+        elif movimiento == "Abajo" and laberinto[i + 1][j] != "X":
+            laberinto[i][j] = " "
+            i += 1
+            coordenadas = comparacion(i, j)
+            i = coordenadas[0]
+            j = coordenadas[1]
+        elif movimiento == "Derecha" and laberinto[i][j + 1] != "X":
+            laberinto[i][j] = " "
+            j += 1
+            coordenadas = comparacion(i, j)
+            i = coordenadas[0]
+            j = coordenadas[1]
+        elif movimiento == "Izquierda" and laberinto[i][j - 1] != "X":
+            laberinto[i][j] = " "
+            j -= 1
+            coordenadas = comparacion(i, j)
+            i = coordenadas[0]
+            j = coordenadas[1]
