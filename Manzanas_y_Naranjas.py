@@ -33,4 +33,5 @@ def contarfrutas(contadormanzanas, contadornaranjas):
     print("En total han caido " + str(contadornaranjas) + " naranjas en la casa de Sam.")
 
 if __name__ == '__main__':
+    print("La casa de Sam está en el intervalo x = " + str(CASA))
     contarfrutas(contadormanzanas, contadornaranjas)
