@@ -3,12 +3,12 @@ import random
 a = []
 for i in range(3):
     a.append(random.randint(0,100))
-print("La calificación del desafío de Lucía es: " + str(a))
+print("La calificaciónes del desafío de Lucía son: " + str(a))
 
 b = []
 for i in range(3):
     b.append(random.randint(0,100))
-print("La calificación del desafío de Carlos es: " + str(b))
+print("La calificaciónes del desafío de Carlos son: " + str(b))
 
 def compareTriplets():
     score1 = 0
