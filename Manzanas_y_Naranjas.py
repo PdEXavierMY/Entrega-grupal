@@ -6,7 +6,5 @@
 
 import random
 
-from Suma_Número_muygrande import construccion_matriz
-
 contadormanzanas = 0
 contadornaranjas = 0
