@@ -1,11 +1,16 @@
 #Lo primero es crear el laberinto de la rana. Lo haremos como en el primer ejemplo, pero podría cambiarse
 #Nos basamos en una de nuestras prácticas del laberinto
 
-muro = ((0,1), (0,2), (0,3), (0,4), (1,1), (2,1), (2,3), (3,3), (4,0), (4,1), (4,2), (4,3))
+muro = ((0,5), (1,3), (1,4), (2,2), (2,3), (2,7), (3,3), (4,3))
+bombas = ((3,2),(3,6), (3,7))
+tunel1 = ((0,2), (7,0))
+tunel2 = ((0,4), (2,4))
+salidas = ((0,7), (7,7))
+
 estructura = len(muro)
 filas = 5
-columnas = 5
-#Se define con antelación el número de filas y columnas del laberinto
+columnas = 8
+#Se define con antelación el número de filas y columnas del laberinto, los muros, bombas y demás
 laberinto = [[]]
 for l in range(filas - 1):
     laberinto += [[]]
@@ -24,8 +29,6 @@ def comparacion(i, j):
 for i in range(filas):
     for j in range(columnas):
         comparacion(i, j)
-
-laberinto[filas - 1][len(laberinto[filas - 1]) - 1] = "S"
 
 def despliegue_laberinto():
     for z in range(len(laberinto) - 1):
