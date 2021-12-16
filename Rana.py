@@ -45,11 +45,9 @@ def obstaculos(i, j):
             laberinto[i].append("S")
             hayobstaculo = True
             break
-    for valor in rana:
-        if valor == (i, j):
-            laberinto[i].append("R")
-            hayobstaculo = True
-            break
+    if rana == (i, j):
+        laberinto[i].append("R")
+        hayobstaculo = True
     if hayobstaculo == False:
         laberinto[i].append(" ")
     return laberinto
@@ -88,62 +86,66 @@ def movimientos(naleatorio):
 def comparacion(i, j):
     if laberinto[i][j] == "S":
         print("La rana ha salido del laberinto, fin de la partida :)")
-        return (i, j, True)
-    if laberinto[i][j] == "B":
+        return (i, j, "True")
+    elif laberinto[i][j] == "B":
         print("La rana ha caido en una bomba, fin de la partida :(")
         return (i, j, "Bomba")
-    if laberinto[i][j] == "t":
+    elif laberinto[i][j] == "t":
         if (i, j) == tunel1[0]:
             i = tunel1[1][0]
             j = tunel1[1][1]
         else:
             i = tunel1[0][0]
             j = tunel1[0][1]
-        return (i, j, False)
-    if laberinto[i][j] == "T":
+        return (i, j, "False")
+    elif laberinto[i][j] == "T":
         if (i, j) == tunel2[0]:
             i = tunel2[1][0]
             j = tunel2[1][1]
         else:
             i = tunel2[0][0]
             j = tunel2[0][1]
-        return (i, j, False)
+        return (i, j, "False")
+    else:
+        return (i, j, "False")
 
 def juego_rana():
-    i = rana[0][0]
-    j = rana[0][1]
+    i = rana[0]
+    j = rana[1]
     while True:
         direccion = random.randint(1, 4)
-        movimiento = movimientos(direccion)
+        movimiento = str(movimientos(direccion))
         if movimiento == "Arriba" and laberinto[i - 1][j] != "X":
             laberinto[i][j] = " "
             i -= 1
-            coordenadas = comparacion(i, j)
+            coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == True or "Bomba":
+            if coordenadas[2] == "True" or "Bomba":
                 break
         elif movimiento == "Abajo" and laberinto[i + 1][j] != "X":
             laberinto[i][j] = " "
             i += 1
-            coordenadas = comparacion(i, j)
+            coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == True or "Bomba":
+            if coordenadas[2] == "True" or "Bomba":
                 break
         elif movimiento == "Derecha" and laberinto[i][j + 1] != "X":
             laberinto[i][j] = " "
             j += 1
-            coordenadas = comparacion(i, j)
+            coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == True or "Bomba":
+            if coordenadas[2] == "True" or "Bomba":
                 break
         elif movimiento == "Izquierda" and laberinto[i][j - 1] != "X":
             laberinto[i][j] = " "
             j -= 1
-            coordenadas = comparacion(i, j)
+            coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == True or "Bomba":
+            if coordenadas[2] == "True" or "Bomba":
                 break
+            
+juego_rana()
