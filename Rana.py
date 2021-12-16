@@ -87,9 +87,11 @@ def movimientos(naleatorio):
 
 def comparacion(i, j):
     if laberinto[i][j] == "S":
-        return (i, j)
+        print("La rana ha salido del laberinto, fin de la partida :)")
+        return (i, j, True)
     if laberinto[i][j] == "B":
-        return (i, j)
+        print("La rana ha caido en una bomba, fin de la partida :(")
+        return (i, j, "Bomba")
     if laberinto[i][j] == "t":
         if (i, j) == tunel1[0]:
             i = tunel1[1][0]
@@ -97,7 +99,7 @@ def comparacion(i, j):
         else:
             i = tunel1[0][0]
             j = tunel1[0][1]
-        return (i, j)
+        return (i, j, False)
     if laberinto[i][j] == "T":
         if (i, j) == tunel2[0]:
             i = tunel2[1][0]
@@ -105,7 +107,7 @@ def comparacion(i, j):
         else:
             i = tunel2[0][0]
             j = tunel2[0][1]
-        return (i, j)
+        return (i, j, False)
 
 def juego_rana():
     i = rana[0][0]
@@ -119,21 +121,29 @@ def juego_rana():
             coordenadas = comparacion(i, j)
             i = coordenadas[0]
             j = coordenadas[1]
+            if coordenadas[2] == True or "Bomba":
+                break
         elif movimiento == "Abajo" and laberinto[i + 1][j] != "X":
             laberinto[i][j] = " "
             i += 1
             coordenadas = comparacion(i, j)
             i = coordenadas[0]
             j = coordenadas[1]
+            if coordenadas[2] == True or "Bomba":
+                break
         elif movimiento == "Derecha" and laberinto[i][j + 1] != "X":
             laberinto[i][j] = " "
             j += 1
             coordenadas = comparacion(i, j)
             i = coordenadas[0]
             j = coordenadas[1]
+            if coordenadas[2] == True or "Bomba":
+                break
         elif movimiento == "Izquierda" and laberinto[i][j - 1] != "X":
             laberinto[i][j] = " "
             j -= 1
             coordenadas = comparacion(i, j)
             i = coordenadas[0]
             j = coordenadas[1]
+            if coordenadas[2] == True or "Bomba":
+                break
