@@ -10,7 +10,6 @@ def simpleArraySum(matriz):
 def construccion_matriz():
     matriz = []
     filas = int(input("¿Cuántas filas tendrá la matriz?(Por favor intrduzca solo un número) "))
-    #(Se podría modificar para que se repitiese la pregunta si no se introduce un entero)
     print("Todas las filas deben tener el mismo número de elementos.")
     print("Si alguna fila tiene más elementos que la anterior, se eliminarán los últimos elementos de esta hasta que en cada fila haya el mismo número de elementos.")
     print("Si alguna fila tiene menos elementos que la anterior, se añádirán 0 hasta que en cada fila haya el mismo número de elementos.")

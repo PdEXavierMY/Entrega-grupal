@@ -10,6 +10,8 @@ for i in range(3):
     b.append(random.randint(0,100))
 print("La calificaciónes del desafío de Carlos son: " + str(b))
 
+#Hasta aquí se definen las puntuaciones de forma aleatoria
+
 def compareTriplets():
     score1 = 0
     score2 = 0

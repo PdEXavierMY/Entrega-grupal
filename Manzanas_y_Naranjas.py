@@ -12,18 +12,21 @@ contadormanzanas = 0
 contadornaranjas = 0
 manzanascaidas = int(input("Introduce el número de manzanas que se han caido del árbol: "))
 naranjascaidas = int(input("Introduce el número de naranjas que se han caido del árbol: "))
+#Variables iniciales definidas por el usuario
 
 def contarfrutas(contadormanzanas, contadornaranjas):
     for i in range(manzanascaidas):
-        valor_caida_m = random.randint(-15,15) #Se puede ampliar aunque reduce la posibilidad de caer en la casa
-        manzana = MANZANO - valor_caida_m
+        valor_caida_m = random.randint(-15,15) #Cuanto se desplaza la fruta
+        #Se puede ampliar aunque reduce la posibilidad de caer en la casa
+        manzana = MANZANO - valor_caida_m #Donde se queda la fruta
         print("La " + str(i +1) + " manzana ha caido en el punto x = " + str(manzana))
         if CASA[0] <= manzana <= CASA[1]:
             contadormanzanas += 1
 
     for j in range(naranjascaidas):
-        valor_caida_n = random.randint(-15,15) #Se puede ampliar aunque reduce la posibilidad de caer en la casa
-        naranja = MANZANO - valor_caida_n
+        valor_caida_n = random.randint(-15,15) #Cuanto se desplaza la fruta
+        #Se puede ampliar aunque reduce la posibilidad de caer en la casa
+        naranja = MANZANO - valor_caida_n #Donde se queda la fruta
         print("La " + str(j +1) + " naranja ha caido en el punto x = " + str(naranja))
         if CASA[0] <= naranja <= CASA[1]:
             contadornaranjas += 1

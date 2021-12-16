@@ -2,7 +2,7 @@
 
 import random
 
-def casospiedras(npiedras):
+def casospiedras(npiedras): #Hasta 20, luego se reducirá aleatoriamente hasta llegar a un caso de los 20 primeros
     if npiedras == 2:
         npiedras -= 2
         print("2 piedras")
