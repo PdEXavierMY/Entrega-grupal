@@ -5,7 +5,7 @@
 
 import random
 
-CASA = tuple(map(int, input("Introduce el intervalo de x en el que está la casa de Sam: ").rstrip().split()))
+CASA = tuple(map(int, input("Introduce el intervalo de x en el que está la casa de Sam con dos enteros separados por un espacio(Ej: 25 30): ").rstrip().split()))
 MANZANO = int(input("Introduce la posición del manzano: "))
 NARANJO = int(input("Introduce la posición del naranjo: "))
 contadormanzanas = 0
