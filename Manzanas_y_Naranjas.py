@@ -18,17 +18,19 @@ def contarfrutas(contadormanzanas, contadornaranjas):
     for i in range(manzanascaidas):
         valor_caida_m = random.randint(-15,15)
         manzana = MANZANO - valor_caida_m
+        print("La " + str(i +1) + " manzana ha caido en el punto x = " + str(manzana))
         if CASA[0] <= manzana <= CASA[1]:
             contadormanzanas += 1
-    print("En total han caido " + str(contadormanzanas) + " manzanas en la casa de Sam.")
 
     for j in range(naranjascaidas):
         valor_caida_n = random.randint(-15,15)
-        naranja = MANZANO - valor_caida_m
+        naranja = MANZANO - valor_caida_n
+        print("La " + str(j +1) + " naranja ha caido en el punto x = " + str(naranja))
         if CASA[0] <= naranja <= CASA[1]:
             contadornaranjas += 1
 
+    print("En total han caido " + str(contadormanzanas) + " manzanas en la casa de Sam.")
     print("En total han caido " + str(contadornaranjas) + " naranjas en la casa de Sam.")
 
 if __name__ == '__main__':
-    contarfrutas()
+    contarfrutas(contadormanzanas, contadornaranjas)
