@@ -5,7 +5,7 @@ import random
 import os
 import time
 
-def clearConsole():
+def clearConsole(): #Borra lo printeado
     command = 'clear'
     if os.name in ('nt', 'dos', 'ce'):
         command = 'cls'
@@ -112,11 +112,26 @@ def comparacion(i, j):
         clearConsole()
         return (i, j, False)
 
+def porcentaje_victoria(i, j): #Probabilidad de escapar basada en lo que rodea a la rana
+    libre = 4
+    if laberinto[i+1][j] == "X" or laberinto[i+1][j] == "B":
+        libre -= 1
+    if laberinto[i-1][j] == "X" or laberinto[i-1][j] == "B":
+        libre -= 1
+    if laberinto[i][j+1] == "X" or laberinto[i][j+1] == "B":
+        libre -= 1
+    if laberinto[i][j-1] == "X" or laberinto[i][j-1] == "B":
+        libre -= 1
+    probabilidad = float(libre/4)
+    return probabilidad
+
 def juego_rana():
     posible_direccion = ["Arriba", "Abajo", "Derecha", "Izquierda"]
     i = rana[0] + 1
     j = rana[1]+ 1
+    probabilidad = 1.00
     while True:
+        probabilidad *= porcentaje_victoria(i, j)
         direccion = random.choice(posible_direccion)
         if direccion == "Arriba" and laberinto[i - 1][j] != "X":
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
@@ -130,6 +145,7 @@ def juego_rana():
             despliegue_laberinto(laberinto)
             time.sleep(0.25)
             if coordenadas[2] == True:
+                print("La probabilidad de escapar esta ronda ha sido de " + str(probabilidad) + "%")
                 break
         elif direccion == "Abajo" and laberinto[i + 1][j] != "X":
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
@@ -143,6 +159,7 @@ def juego_rana():
             despliegue_laberinto(laberinto)
             time.sleep(0.25)
             if coordenadas[2] == True:
+                print("La probabilidad de escapar esta ronda ha sido de " + str(probabilidad) + "%")
                 break
         elif direccion == "Derecha" and laberinto[i][j + 1] != "X":
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
@@ -156,6 +173,7 @@ def juego_rana():
             despliegue_laberinto(laberinto)
             time.sleep(0.25)
             if coordenadas[2] == True:
+                print("La probabilidad de escapar esta ronda ha sido de " + str(probabilidad) + "%")
                 break
         elif direccion == "Izquierda" and laberinto[i][j - 1] != "X":
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
@@ -169,6 +187,7 @@ def juego_rana():
             despliegue_laberinto(laberinto)
             time.sleep(0.25)
             if coordenadas[2] == True:
+                print("La probabilidad de escapar esta ronda ha sido de " + str(probabilidad) + "%")
                 break
 
 if __name__ == '__main__':
