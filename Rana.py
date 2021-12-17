@@ -195,3 +195,5 @@ if __name__ == '__main__':
 #La probabilidad de escapar se calcula en cada movimiento basada SOLO en las casillas de alrededor
 #y se va multiplicando a la probabilidad general
 #No se nos ocurrió otra forma exacta de calcular la probabilidad del tablero total, por eso lo hemos hecho así
+
+#Súper orgullosos de esta entrega, pedazo rana Rubén, hasta nosostros hemos flipao xd
