@@ -60,7 +60,6 @@ def despliegue_laberinto(laberinto):
     for z in range(len(laberinto) - 1):
         print(str(laberinto[z]) +  ",")
     print(laberinto[len(laberinto) - 1])
-despliegue_laberinto(laberinto)
 
 for i in range(filas):
     laberinto[i] += ["X"]
@@ -72,24 +71,17 @@ for i in range(columnas + 1):
 laberinto = techo_y_suelo + laberinto
 laberinto += techo_y_suelo
 #Se añaden dos filas/columnas al laberinto por cada lado para evitar errores al comparar con las casillas de alrededor
-
-def movimientos(naleatorio):
-    if naleatorio == 1:
-        return "Arriba"
-    elif naleatorio == 2:
-        return "Abajo"
-    elif naleatorio == 3:
-        return "Derecha"
-    elif naleatorio == 4:
-        return "Izquierda"
+tunel1 = ((tunel1[0][0] + 1,tunel1[0][1] + 1), (tunel1[1][0] + 1,tunel1[1][1] + 1))
+tunel2 = ((tunel2[0][0] + 1,tunel2[0][1] + 1), (tunel2[1][0] + 1,tunel2[1][1] + 1))
+#Se cambian las coordenadas del tunel ya que el laberinto se ha ampliado con una capa de muros externa
 
 def comparacion(i, j):
     if laberinto[i][j] == "S":
         print("La rana ha salido del laberinto, fin de la partida :)")
-        return (i, j, "True")
+        return (i, j, True)
     elif laberinto[i][j] == "B":
         print("La rana ha caido en una bomba, fin de la partida :(")
-        return (i, j, "Bomba")
+        return (i, j, True)
     elif laberinto[i][j] == "t":
         if (i, j) == tunel1[0]:
             i = tunel1[1][0]
@@ -97,7 +89,7 @@ def comparacion(i, j):
         else:
             i = tunel1[0][0]
             j = tunel1[0][1]
-        return (i, j, "False")
+        return (i, j, False)
     elif laberinto[i][j] == "T":
         if (i, j) == tunel2[0]:
             i = tunel2[1][0]
@@ -105,47 +97,67 @@ def comparacion(i, j):
         else:
             i = tunel2[0][0]
             j = tunel2[0][1]
-        return (i, j, "False")
+        return (i, j, False)
     else:
-        return (i, j, "False")
+        return (i, j, False)
 
 def juego_rana():
-    i = rana[0]
-    j = rana[1]
+    posible_direccion = ["Arriba", "Abajo", "Derecha", "Izquierda"]
+    i = rana[0] + 1
+    j = rana[1]+ 1
     while True:
-        direccion = random.randint(1, 4)
-        movimiento = str(movimientos(direccion))
-        if movimiento == "Arriba" and laberinto[i - 1][j] != "X":
-            laberinto[i][j] = " "
+        direccion = random.choice(posible_direccion)
+        if direccion == "Arriba" and laberinto[i - 1][j] != "X":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = " "
             i -= 1
             coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == "True" or "Bomba":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = "R"
+            despliegue_laberinto(laberinto)
+            print("")
+            if coordenadas[2] == True:
                 break
-        elif movimiento == "Abajo" and laberinto[i + 1][j] != "X":
-            laberinto[i][j] = " "
+        elif direccion == "Abajo" and laberinto[i + 1][j] != "X":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = " "
             i += 1
             coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == "True" or "Bomba":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = "R"
+            despliegue_laberinto(laberinto)
+            print("")
+            if coordenadas[2] == True:
                 break
-        elif movimiento == "Derecha" and laberinto[i][j + 1] != "X":
-            laberinto[i][j] = " "
+        elif direccion == "Derecha" and laberinto[i][j + 1] != "X":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = " "
             j += 1
             coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == "True" or "Bomba":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = "R"
+            despliegue_laberinto(laberinto)
+            print("")
+            if coordenadas[2] == True:
                 break
-        elif movimiento == "Izquierda" and laberinto[i][j - 1] != "X":
-            laberinto[i][j] = " "
+        elif direccion == "Izquierda" and laberinto[i][j - 1] != "X":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = " "
             j -= 1
             coordenadas = tuple(comparacion(i, j))
             i = coordenadas[0]
             j = coordenadas[1]
-            if coordenadas[2] == "True" or "Bomba":
+            if laberinto[i][j] != "T" and laberinto[i][j] != "t":
+                laberinto[i][j] = "R"
+            despliegue_laberinto(laberinto)
+            print("")
+            if coordenadas[2] == True:
                 break
-            
+
 juego_rana()
