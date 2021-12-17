@@ -2,6 +2,13 @@
 #Nos basamos en una de nuestras prácticas del laberinto
 
 import random
+import os
+
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos', 'ce'):
+        command = 'cls'
+    os.system(command)
 
 muro = ((0,5), (1,3), (1,4), (2,2), (2,3), (2,7), (3,3), (4,3))
 bombas = ((3,2),(3,6), (3,7))
@@ -89,6 +96,7 @@ def comparacion(i, j):
         else:
             i = tunel1[0][0]
             j = tunel1[0][1]
+        clearConsole()
         return (i, j, False)
     elif laberinto[i][j] == "T":
         if (i, j) == tunel2[0]:
@@ -97,8 +105,10 @@ def comparacion(i, j):
         else:
             i = tunel2[0][0]
             j = tunel2[0][1]
+        clearConsole()
         return (i, j, False)
     else:
+        clearConsole()
         return (i, j, False)
 
 def juego_rana():
@@ -117,7 +127,6 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
-            print("")
             if coordenadas[2] == True:
                 break
         elif direccion == "Abajo" and laberinto[i + 1][j] != "X":
@@ -130,7 +139,6 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
-            print("")
             if coordenadas[2] == True:
                 break
         elif direccion == "Derecha" and laberinto[i][j + 1] != "X":
@@ -143,7 +151,6 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
-            print("")
             if coordenadas[2] == True:
                 break
         elif direccion == "Izquierda" and laberinto[i][j - 1] != "X":
@@ -156,7 +163,6 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
-            print("")
             if coordenadas[2] == True:
                 break
 
