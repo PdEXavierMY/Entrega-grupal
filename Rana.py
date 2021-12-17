@@ -3,6 +3,7 @@
 
 import random
 import os
+import time
 
 def clearConsole():
     command = 'clear'
@@ -127,6 +128,7 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
+            time.sleep(0.25)
             if coordenadas[2] == True:
                 break
         elif direccion == "Abajo" and laberinto[i + 1][j] != "X":
@@ -139,6 +141,7 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
+            time.sleep(0.25)
             if coordenadas[2] == True:
                 break
         elif direccion == "Derecha" and laberinto[i][j + 1] != "X":
@@ -151,6 +154,7 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
+            time.sleep(0.25)
             if coordenadas[2] == True:
                 break
         elif direccion == "Izquierda" and laberinto[i][j - 1] != "X":
@@ -163,7 +167,9 @@ def juego_rana():
             if laberinto[i][j] != "T" and laberinto[i][j] != "t":
                 laberinto[i][j] = "R"
             despliegue_laberinto(laberinto)
+            time.sleep(0.25)
             if coordenadas[2] == True:
                 break
 
-juego_rana()
+if __name__ == '__main__':
+    juego_rana()
